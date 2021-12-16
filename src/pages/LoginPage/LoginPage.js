@@ -12,6 +12,8 @@ function LoginPage(props) {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
+  const API = "http://localhost:5005"
+
   // Get the function for saving and verifying the token
   const { logInUser } = useContext(AuthContext);
 
@@ -27,7 +29,7 @@ function LoginPage(props) {
 
       const authToken = localStorage.getItem("authToken");
       const response = await axios.post(
-        "http://localhost:5005/auth/login",
+        `${API}/auth/login`,
         requestBody,
         { headers: { Authorization: `Bearer ${authToken}` } }
       );

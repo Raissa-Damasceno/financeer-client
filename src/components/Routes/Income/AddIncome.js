@@ -3,6 +3,9 @@ import { Modal, Button, Form } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
 
+
+const API = 'http://localhost:5005'
+
 const AddIncome = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [description, setDescription] = useState("");
@@ -30,7 +33,7 @@ const AddIncome = () => {
       e.preventDefault();
 
       const incomeData = { description, value, date, category };
-      await axios.post("http://localhost:5005/api/income", incomeData);
+      await axios.post(`${API}/api/income`, incomeData);
 
       setDescription("");
       setValue(0);

@@ -4,6 +4,8 @@ import React, { createContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
+const API = 'http://localhost:5005'
+
 function AuthProviderWrapper({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -17,7 +19,7 @@ function AuthProviderWrapper({ children }) {
 
       if (storedToken) {
         const response = await axios.get(
-          "http://localhost:5005/auth/verify",
+          `${API}/auth/verify`,
           { headers: { Authorization: `Bearer ${storedToken}` } }
         );
 

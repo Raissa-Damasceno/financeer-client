@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+const API = 'http://localhost:5005'
+
 function IncomeDetails() {
     const [income, setIncome] = useState([]);
 
     const getAllIncome = async () => {
       try {
-        const response = await axios.get("http://localhost:5005/api/income");
+        const response = await axios.get(`${API}/api/income`);
         setIncome(response.data);
   
         console.log(response.data);
