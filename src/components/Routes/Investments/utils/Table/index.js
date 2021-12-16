@@ -77,6 +77,7 @@ const Table = ({ stocks }) => {
             )
           }
         ],
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [stocks]
     )
 
