@@ -23,6 +23,8 @@ function EditExpense() {
       const response = await expenseService.updateOneExpense(expensesId)
 
       const oneExpense = response.data;
+      console.log(oneExpense);
+
       setDescription(oneExpense.description)
       setValue(oneExpense.value)
       setDate(oneExpense.date)
@@ -44,9 +46,7 @@ function EditExpense() {
     try {
       e.preventDefault();
       const requestBody = { description, value, date, category };
-
       await expenseService.updateOneExpense(expensesId, requestBody)
-      
 
     } catch (error) {
     }
@@ -57,7 +57,6 @@ function EditExpense() {
       await expenseService.deleteExpense(expensesId)
 
     } catch (error) {
-
     }
   }
 
@@ -96,7 +95,6 @@ function EditExpense() {
             name="category"
             value={category}
             onChange={handleCategory}
-            multiple
           >
             <option value="Home">Home</option>
             <option value="Education">Education</option>

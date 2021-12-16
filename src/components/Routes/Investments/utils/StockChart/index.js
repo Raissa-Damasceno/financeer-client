@@ -1,9 +1,9 @@
+import Plot from 'react-plotly.js';
 
 const StockChart = ({ searchInput, stockChartXValues, stockChartYValues }) => {
-
     return (
         <div>
-            <plot
+            <Plot
                 data={[
                     {
                         x: stockChartXValues,

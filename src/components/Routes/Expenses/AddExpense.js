@@ -84,7 +84,6 @@ const AddExpense = () => {
             name="category"
             value={category}
             onChange={handleCategory}
-            multiple
           >
             <option value="Home">Home</option>
             <option value="Education">Education</option>
