@@ -27,7 +27,7 @@ function ExpenseDetails() {
 
     return (
         <>
-            Description: {expenses.description},
+            Descriptions: {expenses.description},
             Value: {expenses.value},
             Date: {expenses.date},
             Category: {expenses.category}
