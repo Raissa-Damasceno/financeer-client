@@ -10084,6 +10084,11 @@
   dependencies:
     "find-up" "^3.0.0"
 
+"plotly.js-dist@^2.8.1":
+  "integrity" "sha512-IJOx5VkJbljFtJSJaJuI0QS4u0Zx01nXj8nm+V7jJodFHeeD5iUtUfvKVw84lv/VnBiv6C0YEkZcUp0xRwezGQ=="
+  "resolved" "https://registry.npmjs.org/plotly.js-dist/-/plotly.js-dist-2.8.1.tgz"
+  "version" "2.8.1"
+
 "plotly.js@>1.34.0":
   "integrity" "sha512-UCLixezX6ZQtCq1rI0lXqsophhpQd0kPRcEbyDCRKtPkECvp/wvozRepCJr9AGcCEUApghnZcHIlXjrrANYJuA=="
   "resolved" "https://registry.npmjs.org/plotly.js/-/plotly.js-2.8.1.tgz"
