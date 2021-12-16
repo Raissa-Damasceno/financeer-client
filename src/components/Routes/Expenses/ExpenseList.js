@@ -36,14 +36,14 @@ function ExpenseList() {
 
       <Row xs={2} md={2} className="g-4">
         {Array.from({ length: 1 }).map((_, idx) => (
-          <Col>
+          <Col key={idx}>
             <Card>
               <Card.Body>
                 <Card.Title>Total</Card.Title>
                 <Card.Text>
-                <h2>
-                €{sumOfExpenses},00
-                </h2>
+
+                  €{sumOfExpenses},00
+
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -52,49 +52,47 @@ function ExpenseList() {
       </Row>
 
       <div className='test'>
-      <div className='Charts'>
-      <Charts  />
-      </div>
+        <div className='Charts'>
+          <Charts />
+        </div>
 
 
-      <Table>
-          <div className= 'table'>
-        <thead>
-          <tr>
-            <th> Descrição </th>
-            <th> Valor </th>
+        <Table>
+            <thead className='table'>
+              <tr>
+                <th> Descrição </th>
+                <th> Valor </th>
 
-            <th> <AddExpense /></th>
-          </tr>
-        </thead>
-        <tbody>
-          {expenses &&
-            expenses.map((exp => {
-              return (
-                <tr key={exp._id}>
-                  <td>{exp.description}</td>
-                  <td> {exp.value}</td>
+                <th> <AddExpense /></th>
+              </tr>
+            </thead>
+            <tbody>
+              {expenses &&
+                expenses.map((exp => {
+                  return (
+                    <tr key={exp._id}>
+                      <td>{exp.description}</td>
+                      <td> {exp.value}</td>
 
-                  <td>
-                    <Button>View</Button>
+                      <td>
+                        <Button>View</Button>
 
-                    <Link to= {'/expenses/edit/' + exp._id}>
-                      <Button >Edit</Button>
-                    </Link>
+                        <Link to={'/expenses/edit/' + exp._id}>
+                          <Button >Edit</Button>
+                        </Link>
 
-                    <Button>
-                    <img className='delete-icon' src={DeleteIcon} alt='delete-icon' />
-                    </Button>
-                  </td>
-                </tr>
-              );
-            }))
+                        <Button>
+                          <img className='delete-icon' src={DeleteIcon} alt='delete-icon' />
+                        </Button>
+                      </td>
+                    </tr>
+                  );
+                }))
 
-          }
+              }
 
-        </tbody>
-      </div>
-      </Table>
+            </tbody>
+        </Table>
       </div>
     </div>
 
