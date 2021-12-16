@@ -1,11 +1,13 @@
+import Portfolio from './../../components/Routes/Investments/pages/Portfolio'
+import Stocks from './../../components/Routes/Investments/pages/index'
+
 function Investments() {
-    return ( 
+    return (
         <>
-
-
-            Hello
+            <Portfolio />
+            <Stocks />
         </>
-     );
+    );
 }
 
 export default Investments;

@@ -1,5 +1,3 @@
-/* src/index.css */
-
 body {
   margin: 0;
 }
@@ -31,23 +29,6 @@ textarea {
   margin: 10px;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background: #ffffff;
-  font-weight: 600;
-  border-bottom: 1px solid #000000a8;
-}
-
-nav li {
-  list-style: none;
-  text-decoration: none;
-  display: inline-block;
-  margin: 0px 20px;
-  font-size: 1.2rem;
-  color: #000000;
-}
 
 .card {
   width: 400px;
@@ -91,8 +72,31 @@ nav li {
   padding: 0px;
 }
 
+nav {
+  background: #7386d5;
+  color: white;
+  padding: 0px 20px;
+  box-shadow: 0px 1px 2px gray;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+.Navbar {
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav li {
+  list-style: none;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+}
+
 .DetailsDescription{
-  text-align: left;
+display: flex;
 
 }
 
@@ -133,12 +137,7 @@ nav li {
 .TaskCard {
   background-color: #dfeef9;
 }
-.Navbar {
-  padding: 5px 20px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+
 
 .profile-img-wrapper {
   width: 50px;
@@ -149,6 +148,41 @@ nav li {
   border-radius: 35px;
   border: 2px solid black;
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+.icon {
+  color: white;
+
+}
+
+.text {
+  color: white;
+  text-align: center;
+  font-size:medium;
+}
+
+.expenses-list {
+  list-style: none;
+  padding: 0;
+}
+
+.expenses-list__fallback {
+  color: white;
+  text-align: center;
+}
+
+.card {
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 190%;
+}
+
+.table {
+  width: 100%;
+  margin-top: -19%;
+  margin-left: 30%
+  
+  
 }
 
 

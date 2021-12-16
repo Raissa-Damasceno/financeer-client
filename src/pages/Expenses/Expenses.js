@@ -1,14 +1,12 @@
-import AddExpenses from '../../components/Routes/Expenses/AddExpense'
-//import ExpenseDetails from '../../components/Routes/Expenses/ExpenseDetails';
+import ExpenseList from './../../components/Routes/Expenses/ExpenseList'
 
 
 function Expenses() {
-  return (
-    <>
-    <AddExpenses />
-    {/* <ExpenseDetails /> */}
-    </>
-  )
+    return ( 
+        <>
+        <ExpenseList / >
+
+        </> )
 
 }
 

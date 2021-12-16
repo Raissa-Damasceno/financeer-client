@@ -1,38 +1,38 @@
-// import { useParams } from 'react-router-dom'
-// import { useState, useEffect } from 'react'
-// import axios from 'axios'
-
-// const url = "http://localhost:5005/api";
-
-// function ExpenseDetails() {
-//     const [expenses, setExpenses] = useState({})
-
-//     const { expensesId } = useParams
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             const response = await axios.get(`${url}/expenses/` + expensesId)
-//             console.log(response);
-//             const oneExpenseData = response.data;
-
-//             setExpenses(oneExpenseData)
-//         }
-
-//         fetchData()
-
-//     }, [])
+import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import expenseServices from './../../../services/expense.service'
 
 
-//     return (
-//         <>
 
-//             Description: {expenses.description},
-//             Value: {expenses.value},
-//             Date: {expenses.date},
-//             Category: {expenses.category}
 
-//         </>
-//     );
-// }
+function ExpenseDetails() {
+    const [expenses, setExpenses] = useState({})
 
-// export default ExpenseDetails;
+    const { expensesId } = useParams();
+
+    const getOneExpense = async () => {
+        try {
+            const response = await expenseServices.getOneExpense(expensesId)
+            const oneExpense = response.data;
+            console.log(oneExpense);
+
+            setExpenses(oneExpense)
+        } catch (error) { }
+    }
+
+    useEffect(() => {
+        getOneExpense()
+
+    }, [])
+
+    return (
+        <>
+            Description: {expenses.description},
+            Value: {expenses.value},
+            Date: {expenses.date},
+            Category: {expenses.category}
+        </>
+    );
+}
+
+export default ExpenseDetails;

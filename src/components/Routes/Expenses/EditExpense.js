@@ -1,24 +1,36 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import expenseService from "./../../../services/expense.service";
+import { Modal, Button, Form } from 'antd'
 
-import React, { useState } from "react";
-import { Modal, Button, Form } from "antd";
-import "antd/dist/antd.css";
-import { useNavigate } from "react-router-dom";
-import expenseService from './../../../services/expense.service'
-
-const AddExpense = () => {
+function EditExpense() {
   const [isModalVisible, setIsModalVisible] = useState(false);
-
   const [description, setDescription] = useState("");
   const [value, setValue] = useState(0);
   const [date, setDate] = useState(Date);
   const [category, setCategory] = useState("");
+
+  const { expensesId } = useParams();
 
   const handleDescription = (event) => setDescription(event.target.value);
   const handleValue = (event) => setValue(event.target.value);
   const handleDate = (event) => setDate(event.target.value);
   const handleCategory = (event) => setCategory(event.target.value);
 
-  const navigate = { useNavigate }
+  useEffect(() => {
+    const fetchData = async () => {
+
+      const response = await expenseService.updateOneExpense(expensesId)
+
+      const oneExpense = response.data;
+      setDescription(oneExpense.description)
+      setValue(oneExpense.value)
+      setDate(oneExpense.date)
+      setCategory(oneExpense.category)
+
+    }
+    fetchData()
+  }, [expensesId])
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -28,33 +40,34 @@ const AddExpense = () => {
     setIsModalVisible(false);
   };
 
-  const handleSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     try {
       e.preventDefault();
-      setIsModalVisible(false);
-
       const requestBody = { description, value, date, category };
-      await expenseService.createOneExpense(requestBody);
 
-      setDescription("");
-      setValue(0);
-      setDate(Date);
-      setCategory("");
+      await expenseService.updateOneExpense(expensesId, requestBody)
+      
 
-      navigate('/')
     } catch (error) {
-      //console.log(error);
     }
-  };
+  }
+
+  const deleteExpense = async () => {
+    try {
+      await expenseService.deleteExpense(expensesId)
+
+    } catch (error) {
+
+    }
+  }
 
   return (
     <>
-      <Button type="primary" onClick={showModal}> + </Button>
 
       <Modal
         className="Modal"
         visible={isModalVisible}
-        onOk={handleSubmit}
+        onOk={handleFormSubmit}
         onCancel={handleCancel}
       >
         <div className="modalTitle">
@@ -76,7 +89,6 @@ const AddExpense = () => {
             value={value}
             onChange={handleValue}
           />
-
           <label>Date</label>
           <input name="date" type="date" value={date} onChange={handleDate} />
           Category
@@ -101,8 +113,14 @@ const AddExpense = () => {
           </select>
         </Form>
       </Modal>
+
+      <Button type="primary" onClick={showModal}>
+        Edit</Button>
+
+      <button onClick={deleteExpense}>Delete Project</button>
+
     </>
   );
-};
+}
 
-export default AddExpense;
+export default EditExpense;
