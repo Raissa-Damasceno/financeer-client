@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const API = 'http://localhost:5005'
+const API = process.env.REACT_APP_SERVER_URL;
 
 function IncomeDetails() {
     const [income, setIncome] = useState([]);

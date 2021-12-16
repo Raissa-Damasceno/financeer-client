@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 //import authService from "../../services/auth.service";
-const API = "http://localhost:5005"
+const API = process.env.REACT_APP_SERVER_URL;
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");

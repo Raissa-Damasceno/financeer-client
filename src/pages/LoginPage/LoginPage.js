@@ -6,13 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../context/auth.context";
 
 //import authService from "../../services/auth.service";
+const API = process.env.REACT_APP_SERVER_URL;
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const API = "http://localhost:5005"
 
   // Get the function for saving and verifying the token
   const { logInUser } = useContext(AuthContext);

@@ -4,7 +4,7 @@ import React, { createContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
-const API = 'http://localhost:5005'
+const API = process.env.REACT_APP_SERVER_URL;
 
 function AuthProviderWrapper({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

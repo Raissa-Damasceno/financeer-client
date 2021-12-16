@@ -3,8 +3,7 @@ import { Modal, Button, Form } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
 
-
-const API = 'http://localhost:5005'
+const API = process.env.REACT_APP_SERVER_URL;
 
 const AddIncome = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
