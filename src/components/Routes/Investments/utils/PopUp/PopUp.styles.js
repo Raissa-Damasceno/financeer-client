@@ -19,7 +19,7 @@ export const Content = styled.div`
         background-color: white;
         position: absolute;
         top: 30%;
-        left: 30%;
+        left: 5%;
         width: 40%;
         padding: 20px;
         border: none;

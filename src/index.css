@@ -91,9 +91,6 @@ nav li {
   min-width: 40px;
 }
 
-.botão{
-  display: flex;
-}
 
 
 .css-11xur9t-MuiPaper-root-MuiTableContainer-root {
@@ -139,3 +136,13 @@ button, select {
 .sum{
   font-size: larger;
 }
+
+.Navbar {
+  display: flex;
+  background: #000000;
+  box-shadow: 0px 1px 2px grey;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 25px;
+}
+
