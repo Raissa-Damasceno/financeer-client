@@ -1,6 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Form } from "antd";
+import Button from '@mui/material/Button';
+
+
 
 //import authService from "../../services/auth.service";
 const API = process.env.REACT_APP_SERVER_URL;
@@ -46,7 +50,7 @@ function SignupPage(props) {
     <div className="SignupPage">
       <h1>Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
+      <Form onSubmit={handleSignupSubmit}>
         <label>Email:</label>
         <input type="text" name="email" value={email} onChange={handleEmail} />
 
@@ -61,8 +65,10 @@ function SignupPage(props) {
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
 
-        <button type="submit">Sign Up</button>
-      </form>
+        <br />
+        <Button type="submit">Sign Up</Button>
+        
+      </Form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 

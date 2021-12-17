@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class ExampleService {
+class IncomeService {
   constructor() {
     this.api = axios.create({
       baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
@@ -20,34 +20,33 @@ class ExampleService {
   }
 
   // POST /api/examples
-  createOne = async (requestBody) => {
-    return this.api.post('/api/examples', requestBody);
+  createOneIncome= async (requestBody) => {
+    return this.api.post('/api/income', requestBody);
   }
 
   // GET /api/examples
-  getAll = async () => {
-    return this.api.get('/api/examples');
+  getAllIncome = async () => {
+    return this.api.get('/api/income');
   }
 
   // GET /api/examples/:id
-  getOne = async (id) => {
-    return this.api.get(`/api/examples/${id}`);
+  getOneIncome = async (incomeId) => {
+    return this.api.get(`/api/income/${incomeId}`);
   }
 
   // PUT /api/examples/:id
-  updateOne = async (id, requestBody) => {
-    return this.api.put(`/api/examples/${id}`, requestBody);
+  updateOneIncome = async (incomeId, requestBody) => {
+    return this.api.put(`/api/income/${incomeId}`, requestBody);
   }
 
   // DELETE /api/examples/:id
-  deleteProject = async (id) => {
-    return this.api.delete(`/api/examples/${id}`);
+  deleteIncome = async (incomesId) => {
+    return this.api.delete(`/api/income/${incomesId}`);
   } 
-
 
 }
 
 // Create one instance of the service
-const exampleService = new ExampleService();
+const incomeService = new IncomeService();
 
-export default exampleService;
+export default incomeService;

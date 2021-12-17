@@ -22,6 +22,22 @@ const BarChartComponent = () => {
     }
   };
 
+  // const sumOfCategory = () =>{
+  //   let sum = 0
+  //   if(expenses.length > 0) {
+  //     expenses.filter(exp=> exp.category === 'Entertainment') 
+      
+  //     sum = filterEnter.map(exp=> exp.value).reduce((a,b)=> a+b)
+  //   }
+
+  //   console.log(sum);
+  // }
+  
+
+
+
+
+
   const data =
     [
       {
@@ -55,7 +71,7 @@ const BarChartComponent = () => {
     <div style={barChartStyle}>
       <h4>Bar Chart</h4>
 
-      <BarChart width={550} height={450} data={data}>
+      <BarChart width={550} height={250} data={data}>
         <XAxis dataKey="category" stroke="#8884d8" />
         <YAxis />
         <Tooltip />
@@ -68,7 +84,7 @@ const BarChartComponent = () => {
 
 const barChartStyle = {
   width: '40%',
-  float: 'left',
+  float: 'center',
   textAlign: 'center'
 };
 

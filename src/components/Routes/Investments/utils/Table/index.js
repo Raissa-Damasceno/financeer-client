@@ -8,6 +8,7 @@ import DeleteIcon from '../../../../../images/delete.svg';
 import { deleteStock } from './../../../../../actions/stocks';
 
 const Table = ({ stocks }) => {
+  console.log(stocks);
     const dispatch = useDispatch()
 
     const columns = React.useMemo(
@@ -19,12 +20,20 @@ const Table = ({ stocks }) => {
             width: 100,
           },
           {
+            Header: 'Shares',
+            accessor: 'shares',
+            width: 150,
+            textAlign: "right",
+            Cell: row => <div style={{ textAlign: "right" }}>{row.value}</div>
+          },
+          {
             Header: 'PRICE',
             accessor: 'price',
             width: 150,
             textAlign: "right",
             Cell: row => <div style={{ textAlign: "right" }}>{row.value}</div>
           },
+
           {
             Header: 'VALUE',
             accessor: 'value',
@@ -41,6 +50,7 @@ const Table = ({ stocks }) => {
             textAlign: "right",
             Cell: row => <div style={{ textAlign: "right" }}>{row.value}</div>
           },
+
           {
             Header: '% CHANGE',
             accessor: 'change',
@@ -57,12 +67,12 @@ const Table = ({ stocks }) => {
                 [info.rows]
               )
               
-              return <div id="total-change" style={totalChange.toFixed(2) ? { textAlign: "right", color: 'red' } : { textAlign: "right", color: '#32c75a' }}>{totalChange.toFixed(2) + '%'}</div>
+              return <div>{totalChange.toFixed(2) + '%' }</div>
             },
             width: 150,
             textAlign: "right",
             Cell: s => (
-              <div className={s.value} style={{ textAlign: "right" }}>
+              <div>
                 {s.value} 
               </div>
             ),

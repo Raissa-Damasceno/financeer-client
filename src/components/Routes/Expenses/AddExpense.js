@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
-import { Modal, Button, Form } from "antd";
-import "antd/dist/antd.css";
-import { useNavigate } from "react-router-dom";
+import { Modal, Form, Input } from "antd";
 import expenseService from './../../../services/expense.service'
+import { PlusOutlined } from '@ant-design/icons'
+
 
 const AddExpense = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -17,8 +16,6 @@ const AddExpense = () => {
   const handleValue = (event) => setValue(event.target.value);
   const handleDate = (event) => setDate(event.target.value);
   const handleCategory = (event) => setCategory(event.target.value);
-
-  const navigate = { useNavigate }
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -41,15 +38,14 @@ const AddExpense = () => {
       setDate(Date);
       setCategory("");
 
-      navigate('/')
     } catch (error) {
-      //console.log(error);
     }
   };
 
   return (
     <>
-      <Button type="primary" onClick={showModal}> + </Button>
+
+      <PlusOutlined style={{ fontSize: '25px', color: '#08c' }} onClick={showModal} />
 
       <Modal
         className="Modal"
@@ -63,14 +59,14 @@ const AddExpense = () => {
 
         <Form className="form">
           <label>Description</label>
-          <input
+          <Input
             name="description"
             type="text"
             value={description}
             onChange={handleDescription}
           />
           <label>Value</label>
-          <input
+          <Input
             name="value"
             type="number"
             value={value}
@@ -78,7 +74,7 @@ const AddExpense = () => {
           />
 
           <label>Date</label>
-          <input name="date" type="date" value={date} onChange={handleDate} />
+          <Input name="date" type="date" value={date} onChange={handleDate} />
           Category
           <select
             name="category"

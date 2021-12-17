@@ -1,12 +1,20 @@
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import expenseService from './../../../services/expense.service'
-import { Table } from 'reactstrap'
-import { Button } from 'antd'
-import AddExpense from "./AddExpense";
-import { Row, Col, Card } from 'react-bootstrap'
-import Charts from './../../Charts/Charts'
-import DeleteIcon from '../../../images/delete.svg';
+import { DeleteOutlined, EditOutlined, FolderOpenOutlined } from '@ant-design/icons'
+import AddExpense from './AddExpense'
+import {Card} from 'antd'
+import Chart from './../../Charts/Charts.js'
+
+
 
 function ExpenseList() {
   const [expenses, setExpense] = useState([]);
@@ -25,77 +33,51 @@ function ExpenseList() {
 
     }
   };
-
-  let sumOfExpenses = 0
-  if (expenses.length > 0) {
-    sumOfExpenses = expenses.map(exp => exp.value).reduce((a, b) => a + b)
-  }
-
   return (
-    <div className='cardTotal'>
+    <>
 
-      <Row xs={2} md={2} className="g-4">
-        {Array.from({ length: 1 }).map((_, idx) => (
-          <Col key={idx}>
-            <Card>
-              <Card.Body>
-                <Card.Title>Total</Card.Title>
-                <Card.Text>
+    <div className='cardExpen'>
+  <Card style={{ width: 300 }}>
+    <p>Card content</p>
 
-                  €{sumOfExpenses},00
+  </Card>
 
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+  <Chart />
+  </div>
+    
+    <TableContainer component={Paper}>
+      <Table style={{ width: 1000 }} aria-label="caption table">
 
-      <div className='test'>
-        <div className='Charts'>
-          <Charts />
-        </div>
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">Description</TableCell>
+            <TableCell align="center">Value</TableCell>
+            <TableCell align="center"><AddExpense /></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {expenses.map((exp) => (
+            <TableRow key={exp._id}>
+              <TableCell align="center" component="th" scope="row">
+                {exp.description}
+              </TableCell>
+              <TableCell align="center">{exp.value},00</TableCell>
+              <TableCell align="center">
 
+                <FolderOpenOutlined style={{ fontSize: '25px', color: '#08c' }} />
+                <Link to={'/expenses/edit/' + exp._id}>
+                  <EditOutlined style={{ fontSize: '25px', color: '#08c' }} />
+                </Link>
+                <DeleteOutlined style={{ fontSize: '25px', color: '#08c' }} />
 
-        <Table>
-            <thead className='table'>
-              <tr>
-                <th> Descrição </th>
-                <th> Valor </th>
+              </TableCell>
 
-                <th> <AddExpense /></th>
-              </tr>
-            </thead>
-            <tbody>
-              {expenses &&
-                expenses.map((exp => {
-                  return (
-                    <tr key={exp._id}>
-                      <td>{exp.description}</td>
-                      <td> {exp.value}</td>
-
-                      <td>
-                        <Button>View</Button>
-
-                        <Link to={'/expenses/edit/' + exp._id}>
-                          <Button >Edit</Button>
-                        </Link>
-
-                        <Button>
-                          <img className='delete-icon' src={DeleteIcon} alt='delete-icon' />
-                        </Button>
-                      </td>
-                    </tr>
-                  );
-                }))
-
-              }
-
-            </tbody>
-        </Table>
-      </div>
-    </div>
-
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </>
   );
 }
 

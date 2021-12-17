@@ -1,6 +1,6 @@
 .App, .wrapper{
   display: flex;
-  align-items: stretch;
+
 }
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
@@ -17,48 +17,5 @@ a:focus {
   text-decoration: none;
   transition: all 0.3s;
 }
-
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-.sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  background: #7386d5;
-  color: #fff;
-  margin-left: -250px;
-  transition: all 0.5s;
-}
-
-.sidebar.is-open {
-  margin-left: 0;
-  transition: 0.2s;
-}
-
-.sidebar-header {
-  background: #6d7fcc;
-}
-
-.sidebar-header h3 {
-  color: #fff;
-  padding: 1em;
-}
-
-.sidebar ul p {
-  color: #fff;
-  padding: 10px;
-}
-
-
-.sidebar-header > span {
-  position: relative;
-  float: right;
-  margin: 0.5em;
-  font-size: 2rem;
-  cursor: pointer;
-  display: none;
-}
-
-
 
 

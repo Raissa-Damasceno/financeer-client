@@ -1,15 +1,11 @@
-import IncomeDetails from '../../components/Routes/Income/IncomeDetails';
-import AddIncome from '../../components/Routes/Income/AddIncome'
-
-
+import IncomeList from './../../components/Routes/Income/IncomeList'
 
 function Income() {
 
 
   return (
     <>
-    <AddIncome />
-    <IncomeDetails />
+    <IncomeList />
     </>
 
   );

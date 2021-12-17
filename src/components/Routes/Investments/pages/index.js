@@ -3,7 +3,8 @@ import {
     API_KEY,
     API_URL,
 } from '../../../../config'
-import PlaceholderImage from './../../../../images/placeholder.svg';
+
+
 // Components
 import SearchBar from './../utils/SearchBar';
 import StockChart from './../utils/StockChart';
@@ -42,16 +43,14 @@ const Home = () => {
     }
 
     return (
-        <main>
+        <div>
             <SearchBar
                 searchInput={searchInput}
                 handleSearchStock={handleSearchStock}
                 fetchStock={fetchStock}
             />
-            {!searchInput ? (
-                <img id="placeholder" src={PlaceholderImage} alt="placeholder" />
-            ) : <StockChart searchInput={searchInput} stockChartXValues={stockChartXValues} stockChartYValues={stockChartYValues} />} 
-        </main>
+            <StockChart searchInput={searchInput} stockChartXValues={stockChartXValues} stockChartYValues={stockChartYValues} />
+        </div>
     );
 
 };

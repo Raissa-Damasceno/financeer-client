@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Modal, Button, Form } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
+import { Modal, Form, Input } from "antd";
+import { PlusOutlined } from '@ant-design/icons'
 
 const API = process.env.REACT_APP_SERVER_URL;
 
@@ -30,6 +31,7 @@ const AddIncome = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      setIsModalVisible(false);
 
       const incomeData = { description, value, date, category };
       await axios.post(`${API}/api/income`, incomeData);
@@ -45,9 +47,7 @@ const AddIncome = () => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        +
-      </Button>
+      <PlusOutlined style={{ fontSize: '25px', color: '#08c' }} onClick={showModal} />
 
       <Modal
         visible={isModalVisible}
@@ -58,7 +58,7 @@ const AddIncome = () => {
 
         <Form onSubmit={handleSubmit}>
         <label>Description</label>
-        <input
+        <Input
           name="description"
           type="text"
           value={description}
@@ -66,7 +66,7 @@ const AddIncome = () => {
         />
 
         <label>Value</label>
-        <input
+        <Input
           name="value"
           type="number"
           value={value}
@@ -74,10 +74,10 @@ const AddIncome = () => {
         />
 
         <label>Date</label>
-        <input name="date" type="date" value={date} onChange={handleDate} />
+        <Input name="date" type="date" value={date} onChange={handleDate} />
 
         Category
-        <input
+        <Input
           name="category"
           type="text"
           value={category}
