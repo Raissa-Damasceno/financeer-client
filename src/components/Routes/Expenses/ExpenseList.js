@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import expenseService from './../../../services/expense.service'
-import { DeleteOutlined, EditOutlined, FolderOpenOutlined } from '@ant-design/icons'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import AddExpense from './AddExpense'
 import {Card} from 'antd'
 import Chart from './../../Charts/Charts.js'
@@ -33,12 +33,21 @@ function ExpenseList() {
 
     }
   };
+
+  let sumOfExpenses = 0;
+  if (expenses.length > 0 ){
+    sumOfExpenses = expenses.map(exp=> exp.value).reduce((a,b)=> a + b);
+  }
+
+
   return (
     <>
 
     <div className='cardExpen'>
   <Card style={{ width: 300 }}>
-    <p>Card content</p>
+  <h1>
+    <p>R${sumOfExpenses},00</p>
+    </h1>
 
   </Card>
 
@@ -64,7 +73,6 @@ function ExpenseList() {
               <TableCell align="center">{exp.value},00</TableCell>
               <TableCell align="center">
 
-                <FolderOpenOutlined style={{ fontSize: '25px', color: '#08c' }} />
                 <Link to={'/expenses/edit/' + exp._id}>
                   <EditOutlined style={{ fontSize: '25px', color: '#08c' }} />
                 </Link>

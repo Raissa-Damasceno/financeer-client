@@ -1,12 +1,10 @@
+   
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form } from "antd";
-import Button from '@mui/material/Button';
-
-
 
 //import authService from "../../services/auth.service";
+
 const API = process.env.REACT_APP_SERVER_URL;
 
 function SignupPage(props) {
@@ -41,8 +39,9 @@ function SignupPage(props) {
       // If the request is successful navigate to login page
       navigate("/login");
     } catch (error) {
+      console.log(error);
       // If the request resolves with an error, set the error message in the state
-      setErrorMessage("Something went wrong");
+      setErrorMessage(error.response.data.message);
     }
   };
 
@@ -50,7 +49,7 @@ function SignupPage(props) {
     <div className="SignupPage">
       <h1>Sign Up</h1>
 
-      <Form onSubmit={handleSignupSubmit}>
+      <form onSubmit={handleSignupSubmit}>
         <label>Email:</label>
         <input type="text" name="email" value={email} onChange={handleEmail} />
 
@@ -65,15 +64,13 @@ function SignupPage(props) {
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
 
-        <br />
-        <Button type="submit">Sign Up</Button>
-        
-      </Form>
+        <button type="submit">Sign Up</button>
+      </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <Link to={"/"}> Login</Link>
     </div>
   );
 }

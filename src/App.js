@@ -18,7 +18,7 @@ import EditIncome from "./components/Routes/Income/EditIncome";
 import Investments from "./pages/Investments/Investments"
 import ExpenseDetails from "./components/Routes/Expenses/ExpenseDetails";
 import EditExpense from './components/Routes/Expenses/EditExpense'
-import Charts from './components/Charts/Charts'
+
 
 function App() {
   return (
@@ -39,7 +39,6 @@ function App() {
           <Route path="/investments" element={<Investments />} />
           <Route path="/expenses/details/:expensesId" element={<ExpenseDetails />} />
           <Route path="/income/edit/:incomeId" element={<EditExpense />} />
-          <Route path="/charts" element={<Charts />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
 

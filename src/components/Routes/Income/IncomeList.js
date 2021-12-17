@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import incomeService from './../../../services/income.service'
-import { DeleteOutlined, EditOutlined, FolderOpenOutlined } from '@ant-design/icons'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import AddIncome from './AddIncome'
 import {Card} from 'antd'
 import Chart from './../../Charts/Charts.js'
@@ -33,12 +33,19 @@ function IncomeList() {
 
     }
   };
+
+  let sumOfReceived = 0;
+  if(income.length > 0) {
+    sumOfReceived = income.map(rec=> rec.value).reduce((a,b)=> a + b);
+  }
   return (
     <>
 
     <div className='cardExpen'>
   <Card style={{ width: 300 }}>
-    <p>Card content</p>
+  <h1>
+    <p>R${sumOfReceived},00</p>
+  </h1>
 
   </Card>
 
@@ -64,7 +71,6 @@ function IncomeList() {
               <TableCell align="center">{inc.value},00</TableCell>
               <TableCell align="center">
 
-                <FolderOpenOutlined style={{ fontSize: '25px', color: '#08c' }} />
                 <Link to={'/income/edit/' + inc._id}>
                   <EditOutlined style={{ fontSize: '25px', color: '#08c' }} />
                 </Link>

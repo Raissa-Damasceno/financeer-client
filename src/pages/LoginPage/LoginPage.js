@@ -1,20 +1,17 @@
-// src/pages/LoginPage.js
+   // src/pages/LoginPage.js
 
 import axios from "axios";
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "./../../context/auth.context";
-import { Form } from "antd";
-import Button from '@mui/material/Button';
+import { AuthContext } from "../../context/auth.context";
+const API = process.env.REACT_APP_SERVER_URL;
 
 //import authService from "../../services/auth.service";
-const API = process.env.REACT_APP_SERVER_URL;
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-
 
   // Get the function for saving and verifying the token
   const { logInUser } = useContext(AuthContext);
@@ -45,8 +42,9 @@ function LoginPage(props) {
 
       navigate("/");
     } catch (error) {
+      console.log(error);
       // If the request resolves with an error, set the error message in the state
-      setErrorMessage("Something went wrong");
+      setErrorMessage(error.response.data.message);
     }
   };
 
@@ -54,7 +52,7 @@ function LoginPage(props) {
     <div className="LoginPage">
       <h1>Login</h1>
 
-      <Form onSubmit={handleLoginSubmit}>
+      <form onSubmit={handleLoginSubmit}>
         <label>Email:</label>
         <input type="text" name="email" value={email} onChange={handleEmail} />
 
@@ -63,8 +61,8 @@ function LoginPage(props) {
 
         <br />
 
-        <Button type="submit">Login</Button>
-      </Form>
+        <button type="submit">Login</button>
+      </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Don't have an account yet?</p>
@@ -74,3 +72,4 @@ function LoginPage(props) {
 }
 
 export default LoginPage;
+

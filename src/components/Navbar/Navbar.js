@@ -9,30 +9,15 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
+
     <nav className="Navbar">
     <div className='butNav'>
-    <ButtonGroup variant="outlined" aria-label="outlined button group">
-      <Link to="/">
-      <Button>Home Page</Button>
-      </Link>
+    <ButtonGroup variant="outlined" aria-label="outlined button group">        
 
       {isLoggedIn && (
         <>
-          <Button onClick={logOutUser}>Logout</Button>
-        </>
-      )}
 
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            <Button>Sign Up</Button>
-          </Link>
-
-          <Link to="/login">
-            <Button>Login</Button>
-          </Link>
-
-          <Link tag={Link} to={"/expenses"}>
+        <Link tag={Link} to={"/expenses"}>
           <Button>Expenses </Button>
           </Link>
 
@@ -44,9 +29,24 @@ function Navbar() {
           <Button>Investments</Button> 
           </Link>
 
-          <Link tag={Link} to={"/charts"}>
-          <Button>Charts </Button>
+        <Link to="/">
+          <Button onClick={logOutUser}>Logout</Button>
+        </Link>
+
+        </>
+      )}
+
+      {!isLoggedIn && (
+        <>
+
+          <Link to="/login">
+            <Button>Login</Button>
           </Link>
+
+          <Link to="/signup">
+            <Button>Sign Up</Button>
+          </Link>
+        
 
         </>
       )}
@@ -54,7 +54,7 @@ function Navbar() {
       <div className="profile-img-wrapper">
         {user && (
           <Link to="/profile">
-            <img className="profile-img" src={user.image} alt="profile" />
+            
           </Link>
         )}
       </div>
